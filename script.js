@@ -25,7 +25,11 @@ function newGrid(size){
     const squareSize = 1000/size;
 
     for(let i = 0; i < size*size; i++){
-        content.innerHTML += `<div class="square" style="width: ${squareSize}px; height: ${squareSize}px;"></div>`;
+        const square = document.createElement('div');
+        square.classList.add('square');
+        square.style.width = `${squareSize}px`;
+        square.style.height = `${squareSize}px`;
+        content.appendChild(square);
     }
 
     content.style.backgroundColor = 'white';
