@@ -1,5 +1,5 @@
 const content = document.getElementById('container');
-let proportion = 0;
+let squares = 0;
 let userValue = 0;
 let eraseToggle = false;
 
@@ -12,28 +12,27 @@ btnErase.addEventListener('click', function(){
 })
 
 btnSize.addEventListener('click', function(){
-    userValue = prompt('Tamanho do grid (max:100):');
+    userValue = parseInt(prompt('Tamanho do grid (max:100):'));
     if(userValue > 100){
         userValue = 100;
     }
-    proportion = userValue*userValue;
-    newGrid();
+    size = userValue*userValue;
+    newGrid(userValue);
 });
 
-function newGrid(){
-    content.innerHTML = " ";
+function newGrid(size){
+    content.innerHTML = "";
+    const squareSize = 1000/size;
 
-    for(let i = 0; i < proportion; i++){
-        content.innerHTML += `<div style="width: ${(960 /userValue) - 4}px; height: ${(960 /userValue) - 4}px;"></div>`;
+    for(let i = 0; i < size*size; i++){
+        content.innerHTML += `<div class="square" style="width: ${squareSize}px; height: ${squareSize}px;"></div>`;
     }
 
     content.style.backgroundColor = 'white';
     
     content.addEventListener('mouseover', function(e){
-        if(eraseToggle){
-            e.target.style.backgroundColor = 'white';
-        } else {
-            e.target.style.backgroundColor = 'blue';
+        if (e.target.classList.contains('square')) {
+            e.target.style.backgroundColor = eraseToggle ? 'white' : 'blue';
         }
         
     })

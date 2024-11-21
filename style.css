@@ -5,12 +5,18 @@ body {
 #container {
     display: flex;
     flex-wrap: wrap;
-    width: 960px;
-    height: 960px;
+    width: 1000px;
+    height: 1000px;
+    border: 1px solid black;
 }
 
-#container div {
+.square {
+    background-color: white;
     border: 1px solid black;
-    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
 }
+
+
+
+
 
